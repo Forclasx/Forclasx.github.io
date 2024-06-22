@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.T. Solonos Motors Rentals</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+        }
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        .header nav {
+            display: flex;
+            gap: 20px;
+        }
+        .header nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+        .header nav a:hover {
+            color: #007BFF;
+        }
+        .header .contact {
+            font-size: 14px;
+        }
+        .header .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .hero {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        .hero img {
+            width: 100%;
+            height: auto;
+        }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .hero-text h1 {
+            font-size: 48px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero-text a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .hero-text a:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+        .tours-section {
+            padding: 40px 50px;
+            background-color: #f9f9f9;
+        }
+        .tours-section h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        .tour-card {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .tour-card img {
+            width: 150px;
+            height: auto;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        .tour-card-content {
+            flex: 1;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .tour-card-content h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .tour-card-content p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .tour-info {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #555;
+            margin-top: auto;
+        }
+        .tour-info span {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .tour-info span img {
+            margin-right: 5px;
+        }
+        .tour-card-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .tour-card-buttons a {
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #000000;
+            background-color: #b9a77e;
+            border: 1px solid #b9a77e;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .tour-card-buttons a:hover {
+            background-color: #7A7363;
+            color: #7A7363;
+        }
+        .see-all-tours {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .see-all-tours a {
+    padding: 40px 700px; /* Уменьшил отступы для мобильных устройств */
+    background-color: #E8E6E6;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+@media only screen and (max-width: 600px) {
+    .see-all-tours a {
+        padding: 15px 30px; /* Дополнительное уменьшение отступов для маленьких экранов */
+        font-size: 14px; /* Уменьшил размер шрифта для мобильных устройств */
+    }
+}
+        .see-all-tours a:hover {
+            background-color: #555;
+        }
+        .reviews-section {
+            padding: 40px 50px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .reviews-section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .review-card {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .review-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .review-card-content {
+            text-align: left;
+        }
+        .review-card-content h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .review-card-content p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+        .carousel-btn.prev {
+            left: 10px;
+        }
+        .carousel-btn.next {
+            right: 10px;
+        }
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #333;
+            color: white;
+        }
+        .footer .contact-info {
+            flex: 1;
+            padding: 40px 50px;
+            background: #D2CCBE url('path_to_background_image') no-repeat center center;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .footer .contact-info div {
+            margin-bottom: 10px;
+        }
+        .footer .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        .footer .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .footer .map {
+            flex: 1;
+            width: 100%;
+            height: 300px;
+        }
+        .footer .bottom-nav {
+            width: 100%;
+            padding: 10px 50px;
+            background-color: #D2CCBE;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer .bottom-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .footer .bottom-nav a:hover {
+            text-decoration: underline;
+        }
+        .footer .bottom-nav div {
+            font-size: 14px;
+        }
+        .footer .social-links {
+            display: flex;
+            gap: 10px;
+        }
+        .footer .social-links a {
+            display: inline-block;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .footer .social-links a:hover {
+            color: #007BFF;
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 20px;
+            }
+            .header nav {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+                width: 100%;
+            }
+            .header nav a {
+                padding: 10px 0;
+                border-bottom: 1px solid #ddd;
+            }
+            .header .contact {
+                display: none;
+                margin-top: 10px;
+                width: 100%;
+                text-align: center;
+            }
+            .header .menu-icon {
+                display: block;
+            }
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            .hero-text a {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+            .tour-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .tour-card-content {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            .tour-card-buttons {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .contact-info {
+                 background-image: url('car.png');
+                 background-size: cover;
+                    background-position: center;
+                     color: white; /* Цвет текста контактной информации */
+                     padding: 20px; /* Отступ вокруг контактной информации */
+            }
+            .footer .contact-info, .footer .map {
+                flex: 100%;
+            }
+            .footer .bottom-nav {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 10px;
+            }
+            .footer .bottom-nav div, .footer .bottom-nav nav {
+                margin-bottom: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                padding: 10px 20px;
+            }
+            .hero-text h1 {
+                font-size: 24px;
+            }
+            .hero-text a {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .tour-card-content h3 {
+                font-size: 16px;
+            }
+            .tour-card-content p {
+                font-size: 12px;
+            }
+            .tour-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .tour-info span {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            S.T. Solonos<br>Motors Rentals
+        </div>
+        <nav id="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Book Online</a>
+            <a href="#">Gallery</a>
+            <a href="#contact">Contacts</a>
+            <a href="#">FAQ</a>
+        </nav>
+        <div class="contact" id="contact-number">
+            +357 12345678
+        </div>
+        <div class="menu-icon" aria-label="Menu" role="button" onclick="toggleMenu()">☰</div>
+    </div>
+    <div class="hero">
+        <img src="img/car.png" alt="Hero Image">
+        <div class="hero-text">
+            <h1>Rental vehicles in Cyprus </h1>
+            <a href="#">see all tours →</a>
+        </div>
+    </div>
+    <div class="tours-section">
+        <h2>Popular Tours</h2>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="tour-card">
+            <img src="img/man.png" alt="Tour Image">
+            <div class="tour-card-content">
+                <h3>Full Day Safari Akamas</h3>
+                <p>Guided self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showGuided<br>
+                   self drive 1hr Quad tour, sandboarding,camel ride BBQ,live showf drive 1hr Quad<br>  
+                   tour, sandboarding,camel ride BBQ,live showGuided self drid self drid self driv...</p>
+                   <div class="tour-info">
+                    <span><span>&#128197;</span> Offered Daily</span>
+                    <span><span>&#9201;</span> Full day</span>
+                    <span><span>&#128181;</span> 80 - 100 €</span>
+                </div>
+            </div>
+            <div class="tour-card-buttons">
+                <a href="#">READ MORE</a>
+                <a href="#">BOOK NOW</a>
+            </div>
+        </div>
+        <div class="see-all-tours">
+            <a href="#">SEE ALL TOURS -></a>
+        </div>
+    </div>
+    <div class="reviews-section">
+        <h2>REVIEWS</h2>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="review-card">
+                    <img src="img/IVAN.png" alt="Review Image">
+                    <div class="review-card-content">
+                        <h3>Ivan Ivanov</h3>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <img src="img/IVAN.png" alt="Review Image">
+                    <div class="review-card-content">
+                        <h3>Jane Doe</h3>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <img src="img/IVAN.png" alt="Review Image">
+                    <div class="review-card-content">
+                        <h3>John Smith</h3>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn prev" onclick="prevSlide()">❮</button>
+            <button class="carousel-btn next" onclick="nextSlide()">❯</button>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="contact-info">
+            <div>Address: 123 Main Street, City, Country</div>
+            <div>Phone: +357 12345678</div>
+            <div>Email: info@example.com</div>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="map">
+            <iframe src="https://maps.google.com/maps?q=35.185566,33.382276&z=15&output=embed" width="100%" height="100%" frameborder="0" style="border:0"></iframe>
+        </div>
+        <div class="bottom-nav">
+            <div>S.T. Solonos Motors Rentals</div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Book Online</a>
+                <a href="#">Gallery</a>
+                <a href="#">Contacts</a>
+                <a href="#">FAQ</a>
+            </nav>
+            <div>+357 12345678</div>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav-links');
+            const contact = document.getElementById('contact-number');
+            if (nav.style.display === 'flex') {
+                nav.style.display = 'none';
+                contact.style.display = 'none';
+            } else {
+                nav.style.display = 'flex';
+                contact.style.display = 'block';
+            }
+        }
+
+        function resetMenu() {
+            const nav = document.getElementById('nav-links');
+            const contact = document.getElementById('contact-number');
+            if (window.innerWidth > 768) {
+                nav.style.display = 'flex';
+                contact.style.display = 'block';
+            } else {
+                nav.style.display = 'none';
+                contact.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('resize', resetMenu);
+        document.addEventListener('DOMContentLoaded', resetMenu);
+
+        function initMap() {
+            const mapOptions = {
+                center: { lat: 34.7720, lng: 32.4297 },
+                zoom: 10
+            };
+            const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            const markers = [
+                { position: { lat: 34.7720, lng: 32.4297 }, title: "Location 1" },
+                { position: { lat: 34.8500, lng: 32.4250 }, title: "Location 2" },
+                { position: { lat: 34.7500, lng: 32.4200 }, title: "Location 3" }
+            ];
+
+            markers.forEach(marker => {
+                new google.maps.Marker({
+                    position: marker.position,
+                    map: map,
+                    title: marker.title
+                });
+            });
+        }
+
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.review-card');
+            const totalSlides = slides.length;
+
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+
+            const newTransformValue = -currentIndex * 100;
+           
+            document.querySelector('.carousel').style.transform = `translateX(${newTransformValue}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>

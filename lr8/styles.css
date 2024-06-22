@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.order-form {
+    background-color: #ffa500;
+    padding: 20px;
+    width: 700px;
+    margin: 50px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.order-form h2 {
+    color: black;
+    margin: 0;
+}
+
+.note {
+    color: white;
+}
+
+.order-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.order-form .left-column,
+.order-form .right-column {
+    width: 48%;
+}
+
+.order-form label.hidden {
+    display: none;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.order-form input[type="text"]::placeholder,
+.order-form input[type="tel"]::placeholder,
+.order-form input[type="email"]::placeholder,
+.order-form textarea::placeholder {
+    color: #888;
+}
+
+.order-form .right-column textarea {
+    height: 125px;
+}
+
+.order-form button {
+    background-color: red;
+    color: white;
+    padding: 1px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 5px; /* Adjusted for better spacing */
+}
+
+.order-form button:hover {
+    background-color: darkred;
+}

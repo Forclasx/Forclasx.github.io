@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <script type="text/javascript">
+        function showAlert() {
+            alert("Это простое уведомление.");
+        }
+    </script>
+    <meta charset="UTF-8">
+    <title>Приветствия</title>
+    <script type="text/javascript">
+        // Первый способ: внедрение внутри тега <head>
+        // Выводит приветствие "Доброе утро" если время меньше чем 10
+        var d = new Date();
+        var time = d.getHours();
+        if (time < 10) {
+            document.write("<b>Доброе утро</b>");
+        }
+    </script>
+    <script type="text/javascript">
+        function showConfirm() {
+            let result = confirm("Вы уверены, что хотите продолжить?");
+            if (result) {
+                alert("Вы нажали 'OK'.");
+            } else {
+                alert("Вы нажали 'Cancel'.");
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function showPrompt() {
+            let userResponse = prompt("Пожалуйста, введите ваше имя:", "Имя");
+            if (userResponse !== null) {
+                alert("Привет, " + userResponse + "!");
+            } else {
+                alert("Вы нажали 'Cancel'.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <a href="#" id="adLink">Перейти к рекламе</a>
+
+    <script>
+        document.getElementById('adLink').addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение ссылки
+            windo w.location.href = 'https://classroom.google.com'; // Замените этот URL на адрес вашего рекламного сайта
+        });
+    </script>
+    <button id="adButton">Перейти к рекламе</button>
+
+    <script>
+        document.getElementById('adButton').addEventListener('click', function() {
+            window.location.href = 'https://classroom.google.com'; // Замените этот URL на адрес вашего рекламного сайта
+        });
+    </script>
+    <button onclick="showAlert()">Показать alert</button>
+    <button onclick="showConfirm()">Показать confirm</button>
+    <button onclick="showPrompt()">Показать prompt</button>
+    <h1>Приветствия</h1>
+    <button id="loopButton">Запустить цикл</button>
+    <div id="loopOutput"></div>
+
+    <script>
+        document.getElementById('loopButton').addEventListener('click', function() {
+            let output = document.getElementById('loopOutput');
+            output.innerHTML = ''; // Очищаем предыдущий вывод
+
+            for (let i = 0; i < 5; i++) {
+                let message = 'Цикл for работает  ' + (i + 1) + '<br>';
+                output.innerHTML += message; // Добавляем сообщение в div
+            }
+        });
+    </script>
+     <button id="whileLoopButton">Запустить цикл while</button>
+     <button id="doWhileLoopButton">Запустить цикл do-while</button>
+     <div id="loopOutput"></div>
+ 
+     <script>
+         document.getElementById('whileLoopButton').addEventListener('click', function() {
+             let output = document.getElementById('loopOutput');
+             output.innerHTML = ''; // Очищаем предыдущий вывод
+             let i = 0;
+ 
+             while (i < 5) {
+                 let message = 'Цикл while работает ' + (i + 1) + '<br>';
+                 output.innerHTML += message; // Добавляем сообщение в div
+                 i++;
+             }
+         });
+ 
+         document.getElementById('doWhileLoopButton').addEventListener('click', function() {
+             let output = document.getElementById('loopOutput');
+             output.innerHTML = ''; // Очищаем предыдущий вывод
+             let i = 0;
+ 
+             do {
+                 let message = 'Цикл do-while работает ' + (i + 1) + '<br>';
+                 output.innerHTML += message; // Добавляем сообщение в div
+                 i++;
+             } while (i < 5);
+         });
+     </script>
+    <div id="greeting1">
+        <!-- Второй способ: внедрение внутри тега <body> -->
+        <script type="text/javascript">
+            // Если время меньше 10 часов, вы получите приветствие "Доброе утро".
+            // В противном случае вы увидите приветствие "Добрый день".
+            var d = new Date();
+            var time = d.getHours();
+            if (time < 10) {
+                document.write("утро");
+            } else {
+                document.write("день");
+            }
+        </script>
+    </div>
+
+
+    <div id="greeting3">
+        <!-- Третий способ: внедрение с использованием обработчика событий -->
+        <script type="text/javascript">
+            window.onload = function() {
+                var d = new Date();
+                var theDay = d.getDay();
+                var greeting;
+                switch (theDay) {
+                    case 5:
+                        greeting = "Пятница";
+                        break;
+                    case 6:
+                        greeting = "Суббота";
+                        break;
+                    case 0:
+                        greeting = " Воскресенье";
+                        break;
+                    default:
+                        greeting = "Сегодня рабочие";
+                }
+                document.getElementById("greeting3").innerHTML = greeting;
+            };
+        </script>
+    </div>
+    <div id="greeting2">
+        <!-- Четвертый способ: внедрение с использованием внешнего файла   -->
+        <script src="script.js"></script>
+    </div>
+   
+</body>
+</html>

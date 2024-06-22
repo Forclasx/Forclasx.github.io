@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<head>
+     <!-- Мета-теги -->
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Моя HTML-страница</title>
+<meta content="Моя веб-страница" name="description">
+<meta content="Ваше имя" name="author">
+    <link rel="stylesheet" href="body.css" />
+    
+      <style>
+         @import url('form.css');
+        
+        /* Стили для таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            color: #666;
+            text-align: center;
+        }
+        ul, ol {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 50%; 
+            height: auto;
+            border-radius: 50%;
+        }
+
+ 
+
+/* Стили для ошибок валидации */
+input:invalid {
+    border-color: red;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+<nav>
+    <ul>
+        <li><a href="#skills">Мои навыки</a></li>
+        <li><a href="#foto">Фото</a></li>
+        <li><a href="#project">Проекты</a></li>
+        <li><a href="#sot">телеграм</a></li>
+        <li><a href="#audio">аудио</a></li>
+        <li><a href="#video">видео</a></li>
+        <li><a href="#form">форма</a></li>
+    </ul>
+</nav>
+
+ 
+
+<!-- Заголовок -->
+<h1>Мое первое html </h1>
+
+<!-- Абзац -->
+<p>Привет! Я - Сергей.</p>
+
+<!-- Список навыков -->
+<h2 id="skills" style="color: blue; font-size: 20px;">Мои навыки:</h2>
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ul>
+<h2 id=“skills”>Мои навыки:</h2> 
+    <ol>
+    <li><strong>HTML</strong></li>
+     <li><strong>CSS</strong></li> 
+     <li><strong>JavaScript</strong></li> 
+    </ol>
+
+
+    
+
+
+    <!-- Изображение -->
+    <h2 id="foto">Мои фотографии:</h2>
+    <img src="jpg/msg-1001757166979-19943.jpg" alt="Моя фотография">
+
+
+    
+
+     
+
+  
+    
+    <!-- Таблица -->
+    <h2 id="project">Мои проекты на GitHub:</h2>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Ссылка</th>
+        </tr>
+        <tr>
+            <td>1 проект</td>
+            <td><a href="https://github.com/Forclasx/REQUIEM">Ссылка</a></td>
+        </tr>
+        <tr>
+            <td>2 проект</td>
+            <td><a href="https://github.com/Forclasx/lr20">Ссылка</a></td>
+        </tr>
+    </table>
+
+    <!-- Гиперссылки -->
+    <h2 id="sot">Соцсети:</h2>
+    <ul>
+        <li><a href="https://t.me/Forlashx">telegram</a></li>
+        
+    </ul>
+
+    <!-- Спецсимволы -->
+    <p>Символ © означает авторские права.</p>
+
+    <!-- Семантические теги -->
+    <article>
+        <h2>Статья о веб-разработке</h2>
+        <p>Здесь текст статьи...</p>
+    </article>
+
+     <!-- Аудио -->
+     <h2 id="audio">Любимая музыка:</h2>
+     <section>
+         <h3>Аудио файл</h3>
+         <audio controls>
+             <source src="media/lobodin.mp3" type="audio/mpeg">   
+         </audio>
+     </section>
+
+    <!-- Видео -->
+    <h2 id="video">Любимые видео:</h2>
+    <section>
+        <h3>Видео файл</h3>
+        <video width="320" height="240" controls>
+            <source src="media/media.mp4" type="video/mp4">
+        </video>
+    </section>
+     <!-- форма -->
+    <h1 id="form">Регистрация</h1>
+    <p>Пожалуйста, заполните форму :</p>
+    <form action="/submit" method="post">
+        <label for="fname">Имя:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Фамилия:</label><br>
+        <input type="text" id="lname" name="lname"><br>
+        <label for="male">Мужской</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="female">Женский</label>
+        <input type="radio" id="female" name="gender" value="female"><br>
+        
+        <label for="sport">Танцы</label>
+        <input type="checkbox" id="sport" name="interest" value="sport">
+        <label for="music">Музыка</label>
+        <input type="checkbox" id="music" name="interest" value="music"><br>
+        <select id="country" name="country">
+            <option value="Россия">Россия</option>
+            <option value="Беларусь">Беларусь</option>
+            <option value="Китай">Казахстан</option>
+        </select><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="phone">Номер телефона:</label><br>
+        <input type="tel" id="phone" name="phone" placeholder="+375 (XX) XXX-XX-XX" pattern="^\+375 \(\d{2}\) \d{3}-\d{2}-\d{2}$"><br>   
+<div class="input-container">
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password">
+</div>
+        <input type="submit" value="Отправить">
+    </form>
+</body>
+</html>

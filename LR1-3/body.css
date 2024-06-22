@@ -1,0 +1,6 @@
+    body {
+    background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #007fff, #0000ff, #7f00ff);
+    font-family: "Times New Roman", serif;
+    font-size: 16pt;
+    color: rgb(0, 0, 0);
+}

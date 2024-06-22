@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сумка COGNAC</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+}
+.container {
+    display: flex;
+    max-width: 1000px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+}
+        .images {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+        .images img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+        .main-image img {
+            width: 300px;
+            height: 430px;
+            border: 1px solid #ccc;
+        }
+        .details {
+            flex: 1;
+            padding-left: 20px;
+        }
+        .details h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .selectors {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .selectors select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        .description h2, .description p {
+            margin: 5px 0;
+        }
+        .order-button {
+            background-color: #a0522d;
+            color: white;
+            padding: 15px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            width: 50%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="images">
+            <img src="2.png" alt="Thumbnail 1">
+            <img src="3.png" alt="Thumbnail 2">
+            <img src="4.png" alt="Thumbnail 3">
+            <img src="5.png" alt="Thumbnail 4">
+        </div>
+        <div class="main-image">
+            <img src="1.png" alt="Сумка COGNAC">
+        </div>
+        <div class="details">
+            <h1>СУМКА COGNAC</h1>
+            <div class="price">€ 345</div>
+            <div class="selectors">
+                <select>
+                    <option>Размер</option>
+                </select>
+                <select>
+                    <option>Цвет</option>
+                </select>
+            </div>
+            <div class="description">
+                <h2>Описание</h2>
+                <p>Сумка ручной работы, изготовлена из настоящей кожи, как и все изделия в нашей мастерской. Наши мастера знают своё дело.</p>
+                <h2>Изготовление</h2>
+                <p>• Вес: 150 гр.<br>• Тип застёжки: нет</p>
+            </div>
+            <button class="order-button">ЗАКАЗАТЬ</button>
+        </div>
+    </div>
+</body>
+</html>

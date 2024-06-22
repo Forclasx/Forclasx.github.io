@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   .setka{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    
+}
+.img-container {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(216, 15, 15);
+}
+
+.img-container img {
+    max-width: 100%;
+    height: auto;
+}
+.col-100{
+    width: 100%;
+    text-align: center;
+    background-color: rgb(216, 15, 15)
+}
+.col-33{
+    width: 33.3%;
+    text-align: center;
+    background-color: rgb(255, 0, 162)
+}
+.col-50{
+    width: 50%;
+    text-align: center;
+    background-color: rgb(179, 255, 0)
+}
+.col-25{
+    width: 25%;
+    text-align: center;
+
+}
+.col-75{
+    width: 75%;
+    text-align: center;
+    background-color: rgb(10, 23, 255)
+  
+}
+.item {
+  background-color: #ccc;
+  margin: 10px;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-container > div {
+  margin-right: 10px; /* Задает отступ между элементами */
+}
+.flex-container1 {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="setka">
+        <div class="col-100">
+            Шапка
+        </div>
+        <div class="col-25  " >
+     1
+        </div>
+        <div class="col-25 ">
+            2
+        </div>
+        <div class="col-25">
+            3
+        </div>
+        <div class="col-25">
+            4
+        </div>
+        <div class="col-33">
+            5
+        </div>
+        <div class="col-33 img-container">
+            <img src="Снимок экрана 2024-03-27 095838.png" alt="Моя фотография">
+        </div>
+        <div class="col-33">
+            7
+        </div>
+        <div class="col-50">
+            8
+        </div>
+        <div class="col-50">
+            9
+        </div>
+        <div class="col-100">
+            10
+        </div>
+        <div class="col-75">
+            11
+        </div>
+        <div class="col-25">
+            Сергей Железнов Сергей Железнов Сергей Железнов Сергей Железнов
+        </div>
+        <div class="col-100">
+            13
+        </div>
+        <div class="col-100">
+            Подвал
+        </div>
+    </div>
+</body>
+</html>

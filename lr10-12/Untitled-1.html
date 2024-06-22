@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вывод информации</title>
+    <script type="text/javascript">
+        function showCurrentDay() {
+            const today = new Date();
+            const day = today.getDate();
+            alert("Сегодня " + day + "-й день месяца");
+        }
+
+        function displayName() {
+            const surname = "Железнов";
+            const name = "Сергей";
+            
+            for (let i = 0; i < 8; i++) {
+                document.write(surname + " " + name + "<br>");
+            }
+        }
+
+        function processArray() {
+            // Исходный массив
+            const array = [3, -1, 4, -2, 5];
+            
+            // Вывод исходного массива
+            document.write("Исходный массив: " + array + "<br>");
+            
+            // Находим сумму положительных элементов
+            let sumPositive = 0;
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] > 0) {
+                    sumPositive += array[i];
+                }
+            }
+            document.write("Сумма положительных элементов: " + sumPositive + "<br>");
+            
+            // Сортировка массива по возрастанию
+            const sortedArray = array.slice().sort((a, b) => a - b);
+            
+            // Вывод отсортированного массива
+            document.write("Отсортированный массив: " + sortedArray + "<br>");
+        }
+
+        function processStrings() {
+            // Создаем строковые переменные
+            let S1 = "Сергей";
+            let S2 = "Программирование, музыка, чтение";
+
+            // 1. Определяем длину строки S1
+            const lengthS1 = S1.length;
+            document.write("Длина строки S1: " + lengthS1 + "<br>");
+
+            // 2. Вставляем дополнительные пробелы в строку S2
+            S2 = S2.split(' ').join('  '); // Вставляем двойные пробелы между словами
+            document.write("Строка S2 с дополнительными пробелами: " + S2 + "<br>");
+
+            // 3. Заменяем ваше имя в строке S1 на имя Павел
+            S1 = S1.replace("Сергей", "Павел");
+            document.write("Измененная строка S1: " + S1 + "<br>");
+        }
+    </script>
+</head>
+<body>
+    <button onclick="showCurrentDay()">Показать текущий день месяца</button>
+    <button onclick="displayName()">Показать имя и фамилию 8 раз</button>
+    <button onclick="processArray()">Работа с массивом</button>
+    <button onclick="processStrings()">Работа со строками</button>
+    <button id="resultsButton">Работа с Math</button>
+    <div id="results"></div>
+    <script src="mathScript.js"></script>
+</body>
+</html>
