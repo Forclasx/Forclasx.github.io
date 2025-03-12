@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры событий интерфейса</title>
+    <style>
+        .drag-area {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            border: 2px dashed #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Примеры событий интерфейса</h1>
+
+    <!-- Событие мыши -->
+    <button id="mouseEvent">Нажми на меня (Событие мыши)</button>
+    <p id="mouseOutput"></p>
+
+    <!-- Событие клавиатуры -->
+    <input type="text" id="keyboardEvent" placeholder="Напишите что-нибудь (Событие клавиатуры)">
+    <p id="keyboardOutput"></p>
+
+    <!-- Событие Drag & Drop -->
+    <div class="drag-area" id="dragArea" draggable="true">Перетащи меня (Событие Drag & Drop)</div>
+    <p id="dropOutput"></p>
+
+    <!-- Событие указателя -->
+    <div style="width: 150px; height: 150px; background: yellow;" id="pointerEvent">Наведи указатель на меня</div>
+    <p id="pointerOutput"></p>
+
+    <!-- Событие прокрутки -->
+    <div style="height: 100px; overflow-y: scroll; width: 300px; border: 1px solid black;">
+        <div style="height: 300px;">Прокрути меня (Событие прокрутки)</div>
+    </div>
+    <p id="scrollOutput"></p>
+
+    <!-- Событие сенсорного экрана -->
+    <div style="width: 200px; height: 100px; background: lightgreen;" id="touchEvent">Потрогай здесь (Событие сенсорного экрана)</div>
+    <p id="touchOutput"></p>
+
+    <!-- Событие таймера -->
+    <button id="timerEvent">Запустить таймер (Событие таймера)</button>
+    <p id="timerOutput"></p>
+
+    <script>
+        // Событие мыши
+        document.getElementById('mouseEvent').addEventListener('click', () => {
+            document.getElementById('mouseOutput').textContent = 'Событие мыши сработало!';
+        });
+
+        // Событие клавиатуры
+        document.getElementById('keyboardEvent').addEventListener('keydown', (event) => {
+            document.getElementById('keyboardOutput').textContent = `Нажата клавиша: ${event.key}`;
+        });
+
+        // Событие Drag & Drop
+        const dragArea = document.getElementById('dragArea');
+        const dropOutput = document.getElementById('dropOutput');
+
+        dragArea.addEventListener('dragstart', () => {
+            dropOutput.textContent = 'Началось перетаскивание!';
+        });
+        dragArea.addEventListener('dragend', () => {
+            dropOutput.textContent = 'Перетаскивание завершено!';
+        });
+
+        // Событие указателя
+        const pointerEvent = document.getElementById('pointerEvent');
+        const pointerOutput = document.getElementById('pointerOutput');
+
+        pointerEvent.addEventListener('pointerover', () => {
+            pointerOutput.textContent = 'Указатель находится над желтым блоком!';
+        });
+        pointerEvent.addEventListener('pointerout', () => {
+            pointerOutput.textContent = 'Указатель ушел с желтого блока!';
+        });
+
+        // Событие прокрутки
+        const scrollDiv = document.querySelector('div[style*="overflow-y: scroll"]');
+        scrollDiv.addEventListener('scroll', () => {
+            document.getElementById('scrollOutput').textContent = 'Обнаружена прокрутка!';
+        });
+
+        // Событие сенсорного экрана
+        const touchEvent = document.getElementById('touchEvent');
+        const touchOutput = document.getElementById('touchOutput');
+
+        touchEvent.addEventListener('touchstart', () => {
+            touchOutput.textContent = 'Началось касание!';
+        });
+        touchEvent.addEventListener('touchend', () => {
+            touchOutput.textContent = 'Касание завершено!';
+        });
+
+        // Событие таймера
+        document.getElementById('timerEvent').addEventListener('click', () => {
+            let counter = 0;
+            const timerOutput = document.getElementById('timerOutput');
+            timerOutput.textContent = 'Таймер запущен!';
+            const interval = setInterval(() => {
+                counter++;
+                timerOutput.textContent = `Таймер: ${counter} секунд`;
+                if (counter === 10) {
+                    clearInterval(interval);
+                    timerOutput.textContent = 'Таймер остановлен на 10 секундах!';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Практическая работа</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    #catalog, #cart, #storageOutput {
+      margin: 20px auto;
+      padding: 15px;
+      max-width: 600px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+      margin: 0 auto 20px auto;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    input, button {
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    button:active {
+      background: #004080;
+    }
+
+    #catalog div {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px 0;
+      background: #f9f9f9;
+    }
+
+    #catalog h3 {
+      margin: 0 0 5px 0;
+    }
+
+    #cart li {
+      list-style: none;
+      border-bottom: 1px solid #ddd;
+      padding: 5px 0;
+    }
+
+    #cart li:last-child {
+      border-bottom: none;
+    }
+
+    #clear-cart {
+      margin: 10px 0;
+      background: #dc3545;
+    }
+
+    #clear-cart:hover {
+      background: #c82333;
+    }
+
+    #clear-cart:active {
+      background: #a71d2a;
+    }
+
+    #output, #storageOutput {
+      white-space: pre-wrap;
+      font-family: monospace;
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Практическая работа</h1>
+
+  <!-- Каталог товаров -->
+  <h2>Каталог товаров</h2>
+  <div id="catalog"></div>
+
+  <!-- Корзина -->
+  <h2>Корзина</h2>
+  <ul id="cart"></ul>
+  <button id="clear-cart">Очистить корзину</button>
+
+  <!-- Работа с Cookie -->
+  <h2>Работа с COOKIE</h2>
+  <h1>Форма для сохранения данных в COOKIE</h1>
+  <form id="cookieForm">
+    <label>
+      ФИО:
+      <input 
+        type="text" 
+        name="name" 
+        placeholder="Введите ФИО" 
+        autocomplete="name" 
+        required>
+    </label><br>
+
+    <label>
+      Электронная почта:
+      <input 
+        type="email" 
+        name="email" 
+        placeholder="Введите email" 
+        autocomplete="email" 
+        required>
+    </label><br>
+
+    <label>
+      Дата рождения:
+      <input 
+        type="date" 
+        name="dob" 
+        autocomplete="bday" 
+        required>
+    </label><br>
+
+    <label>
+      Место рождения:
+      <input 
+        type="text" 
+        name="birthplace" 
+        placeholder="Введите место рождения" 
+        autocomplete="off">
+    </label><br>
+
+    <label>
+      Увлечения:
+      <input 
+        type="text" 
+        name="hobbies" 
+        placeholder="Введите увлечения" 
+        autocomplete="off">
+    </label><br><br>
+
+    <button type="submit">Сохранить в COOKIE</button>
+    <button type="button" id="loadCookies">Показать COOKIE</button>
+    <button type="button" id="clearCookies">Очистить COOKIE</button>
+  </form>
+
+  <div id="output"></div>
+
+  <script>
+    const form = document.getElementById("cookieForm");
+    const output = document.getElementById("output");
+    const loadCookiesButton = document.getElementById("loadCookies");
+    const clearCookiesButton = document.getElementById("clearCookies");
+
+    // Функция для установки куки
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      document.cookie = `${name}=${encodeURIComponent(value)};expires=${date.toUTCString()};path=/`;
+    }
+
+    // Обработчик отправки формы
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      formData.forEach((value, key) => {
+        setCookie(key, value, 7); // Сохраняем каждый элемент формы в куки на 7 дней
+      });
+
+      output.textContent = "Данные сохранены в COOKIE.";
+    });
+
+    // Функция для чтения куки
+    function getCookies() {
+      const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
+        const [key, value] = cookie.split("=");
+        acc[key] = decodeURIComponent(value);
+        return acc;
+      }, {});
+      return cookies;
+    }
+
+    // Обработчик для отображения куки
+    loadCookiesButton.addEventListener("click", () => {
+      const cookies = getCookies();
+      if (Object.keys(cookies).length > 0) {
+        output.textContent = "Сохраненные COOKIE:\n" + JSON.stringify(cookies, null, 2);
+      } else {
+        output.textContent = "COOKIE не найдены.";
+      }
+    });
+
+    // Обработчик для очистки куки
+    clearCookiesButton.addEventListener("click", () => {
+      const cookies = getCookies();
+      for (const key in cookies) {
+        document.cookie = `${key}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
+      }
+      output.textContent = "COOKIE очищены.";
+    });
+  </script>
+
+  <!-- Работа с Local Storage -->
+  <h2>Работа с Local Storage</h2>
+  <form id="storageForm">
+    <input type="text" name="name" placeholder="Имя" required>
+    <input type="email" name="email" placeholder="Электронная почта" required>
+    <button type="submit">Сохранить в Local Storage</button>
+  </form>
+  <button id="getStorage">Получить данные из Local Storage</button>
+  <button id="clearStorage">Очистить Local Storage</button>
+  <p id="storageOutput"></p>
+
+  <script>
+    // Задание 1: Каталог товаров и корзина
+    const products = [
+      { id: 1, name: "Сушки", price: 500, description: "Ванильные" },
+      { id: 2, name: "Печеньки", price: 600, description: "Вкусные" },
+      { id: 3, name: "Пряники", price: 700, description: "Шоколадные" },
+      { id: 4, name: "Пончики", price: 400, description: "Клубничные" },
+      { id: 5, name: "Мармелад", price: 1499, description: "Черничный" }
+    ];
+
+    const catalog = document.getElementById('catalog');
+    const cartList = document.getElementById('cart');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Отображение каталога
+    products.forEach(product => {
+      const productDiv = document.createElement('div');
+      productDiv.innerHTML = `
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <p>Цена: ${product.price} руб.</p>
+        <button onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Добавить в корзину</button>
+      `;
+      catalog.appendChild(productDiv);
+    });
+
+    function addToCart(id, name, price) {
+      cart.push({ id, name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function renderCart() {
+      cartList.innerHTML = '';
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price} руб.`;
+        cartList.appendChild(li);
+      });
+    }
+
+    document.getElementById('clear-cart').addEventListener('click', () => {
+      cart = [];
+      localStorage.removeItem('cart');
+      renderCart();
+    });
+
+    renderCart();
+
+    // Задание 2: Работа с COOKIE
+    
+
+    // Задание 3: Работа с Local Storage
+    document.getElementById('storageForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      formData.forEach((value, key) => {
+        localStorage.setItem(key, value);
+      });
+      alert('Данные сохранены в Local Storage!');
+    });
+
+    document.getElementById('getStorage').addEventListener('click', () => {
+      const data = {};
+      Object.keys(localStorage).forEach(key => {
+        data[key] = localStorage.getItem(key);
+      });
+      document.getElementById('storageOutput').textContent = JSON.stringify(data, null, 2);
+    });
+
+    document.getElementById('clearStorage').addEventListener('click', () => {
+      localStorage.clear();
+      alert('Local Storage очищен!');
+    });
+  </script>
+</body>
+</html>
